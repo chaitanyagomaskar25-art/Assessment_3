@@ -13,6 +13,7 @@ const Expense = (state, action) => {
           {
             id: action.payload.id,
             title: action.payload.title,
+            category: action.payload.category,
             amount: action.payload.amount,
           },
         ],

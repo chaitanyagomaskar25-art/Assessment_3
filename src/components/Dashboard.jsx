@@ -4,7 +4,9 @@ import { useSetAuth } from "../context/AuthContext";
 
 const Dashboard = (props) => {
   const [state, dispath] = useReducer(Expense, initialState);
-  const [title, setTile] = useState("");
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+
   const [amount, setAmount] = useState("");
   const setIsAuth = useSetAuth();
   return (
@@ -53,7 +55,7 @@ const Dashboard = (props) => {
               lue={title}
               onChange={(e) => {
                 if (e.target.value !== "") {
-                  setTile(e.target.value);
+                  setTitle(e.target.value);
                 }
               }}
               type="text"
@@ -67,6 +69,13 @@ const Dashboard = (props) => {
               type="number"
               placeholder="Enter Amount"
             />
+             <input
+              style={{ margin: "20px", padding: "20px", borderRadius: "10px" }}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              type="text"
+              placeholder="Enter Category"
+            />
             <button
               style={{ margin: "20px", padding: "20px", borderRadius: "10px" }}
               onClick={() => {
@@ -75,11 +84,13 @@ const Dashboard = (props) => {
                   payload: {
                     id: Date.now(),
                     title: title,
+                    category: category,
                     amount: Number(amount),
                   },
                 });
                 setAmount("");
-                setTile("");
+                setTitle("");
+                setCategory("");
               }}
             >
               Add expense
@@ -111,8 +122,10 @@ const Dashboard = (props) => {
                 }}
                 key={idx}
               >
+<div>
                 <h3>{item.title}</h3>
-                <p>{item.amount}</p>
+                <p>{item.category}</p>
+    </div>                <p>{item.amount}</p>
                 <button
                   onClick={() =>
                     dispath({
