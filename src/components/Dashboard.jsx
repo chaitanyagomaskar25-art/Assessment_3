@@ -27,7 +27,7 @@ const Dashboard = (props) => {
           Logout
         </button>
       </div>
-    
+
       <div>
         <h1 style={{ margin: "20px" }}>Total Amount Rs. {state.totalAmount}</h1>
         <div
@@ -53,11 +53,7 @@ const Dashboard = (props) => {
                 justifyContent: "center",
               }}
               lue={title}
-              onChange={(e) => {
-                if (e.target.value !== "") {
-                  setTitle(e.target.value);
-                }
-              }}
+              onChange={(e) => setTitle(e.target.value)}
               type="text"
               placeholder="Add expense"
               style={{ margin: "20px", padding: "20px", borderRadius: "10px" }}
@@ -69,7 +65,7 @@ const Dashboard = (props) => {
               type="number"
               placeholder="Enter Amount"
             />
-             <input
+            <input
               style={{ margin: "20px", padding: "20px", borderRadius: "10px" }}
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -122,10 +118,11 @@ const Dashboard = (props) => {
                 }}
                 key={idx}
               >
-<div>
-                <h3>{item.title}</h3>
-                <p>{item.category}</p>
-    </div>                <p>{item.amount}</p>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.category}</p>
+                </div>{" "}
+                <p>{item.amount}</p>
                 <button
                   onClick={() =>
                     dispath({
